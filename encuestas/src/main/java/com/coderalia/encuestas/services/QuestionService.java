@@ -1,11 +1,11 @@
 package com.coderalia.encuestas.services;
 
-import java.util.List;
-
 import com.coderalia.encuestas.domain.Question;
+
+import java.util.List;
 
 public interface QuestionService {
 
 	List<Question> getAllQuestions();
-	List<Question> addQuestion(Question question);
+	Question addQuestion(Question newQuestion);
 }

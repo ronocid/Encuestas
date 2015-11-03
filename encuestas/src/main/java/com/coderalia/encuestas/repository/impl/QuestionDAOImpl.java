@@ -11,24 +11,24 @@ import com.coderalia.encuestas.repository.QuestionDAO;
 
 @Repository
 public class QuestionDAOImpl implements QuestionDAO {
-
-    @Autowired
+	
+	@Autowired
 	private SessionFactory sessionFactory;
-
+	
 	public List<Question> getAllQuestions() {
 		Session session = this.sessionFactory.openSession();
-		List<Question> questionList = session.createQuery("from questions").list();
+	    List<Question> questionList = session.createQuery("from questions").list();
 	    session.close();
 	    return questionList;
 	}
 	
-	public List<Question> insert(Question question) {
+	public Question addQuestion(Question newQuestion) {
 		Session session = this.sessionFactory.openSession();
-		session.save(question);
+		session.save(newQuestion);
 	    session.close();
-	    return null;
+	    return newQuestion;
 	}
-	
+
 	
 	
 
