@@ -14,12 +14,20 @@ public class QuestionDAOImpl implements QuestionDAO {
 	private SessionFactory sessionFactory;
 	public List<Question> getAllQuestions() {
 		Session session = this.sessionFactory.openSession();
-	     List<Question> questionList = session.createQuery("from questions").list();
-	     session.close();
-	     return questionList;
+		List<Question> questionList = session.createQuery("from questions").list();
+	    session.close();
+	    return questionList;
 	}
+	
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+	
+	public List<Question> insert(Question question) {
+		Session session = this.sessionFactory.openSession();
+		session.save(question);
+	    session.close();
+	    return null;
 	}
 	
 	

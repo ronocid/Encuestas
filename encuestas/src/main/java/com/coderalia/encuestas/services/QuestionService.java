@@ -7,5 +7,5 @@ import com.coderalia.encuestas.domain.Question;
 public interface QuestionService {
 
 	List<Question> getAllQuestions();
-
+	List<Question> addQuestion(Question question);
 }
