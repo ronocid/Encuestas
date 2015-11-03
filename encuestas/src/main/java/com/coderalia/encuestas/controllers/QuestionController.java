@@ -1,7 +1,7 @@
 package com.coderalia.encuestas.controllers;
 
-import java.util.List;
-
+import com.coderalia.encuestas.domain.Question;
+import com.coderalia.encuestas.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.coderalia.encuestas.domain.Question;
-import com.coderalia.encuestas.services.QuestionService;
+import java.util.List;
 
 @Controller
 @RequestMapping("/question")
@@ -35,6 +34,6 @@ public class QuestionController {
 	@RequestMapping(value="/add", method= RequestMethod.POST)
 	public String processAddNewQuestionForm(@ModelAttribute("newQuestion") Question newQuestion){
 		questionService.addQuestion(newQuestion);	
-		return "redirect:/questions";
+		return "redirect:/question";
 	}
 }
