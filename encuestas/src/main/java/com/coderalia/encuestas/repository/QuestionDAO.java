@@ -6,4 +6,5 @@ import com.coderalia.encuestas.domain.Question;
 
 public interface QuestionDAO {
 	public List<Question> getAllQuestions();
+	Question addQuestion(Question newQuestion);
 }
