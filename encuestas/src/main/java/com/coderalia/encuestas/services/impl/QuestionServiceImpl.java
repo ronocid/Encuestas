@@ -1,21 +1,17 @@
 package com.coderalia.encuestas.services.impl;
 
-import java.util.List;
-
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Service;
 import com.coderalia.encuestas.domain.Question;
 import com.coderalia.encuestas.repository.QuestionDAO;
 import com.coderalia.encuestas.services.QuestionService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class QuestionServiceImpl implements QuestionService{
+	@Autowired
 	private QuestionDAO questionDAO;
-	
-	public QuestionServiceImpl(){
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");    
-		questionDAO = context.getBean(QuestionDAO.class);
-	}
 	
 	public List<Question> getAllQuestions() {
 		return questionDAO.getAllQuestions();
