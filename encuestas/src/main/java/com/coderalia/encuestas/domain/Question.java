@@ -2,6 +2,8 @@ package com.coderalia.encuestas.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity(name="questions")
@@ -13,6 +15,7 @@ public class Question {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String questionText;
+	private List<Answer> answers;
 	
 	public int getId() {
 		return id;
@@ -27,6 +30,12 @@ public class Question {
 		this.questionText = questionText;
 	}
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "answers")
+	public List<Answer> getAnswers(){
+		return answers;
+	}
 	
-	
+	public void setAnswers(List<Answer> answers){
+		this.answers = answers;
+	}
 }
