@@ -2,7 +2,11 @@ package com.coderalia.encuestas.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity(name="questions")
 @Table(name="questions")
@@ -13,7 +17,16 @@ public class Question {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String questionText;
+	@OneToMany
+	@JoinColumn(name="id_question")
+	private List<Answer> answers;
 	
+	public List<Answer> getListAnswers() {
+		return answers;
+	}
+	public void setListAnswers(List<Answer> listAnswers) {
+		this.answers = listAnswers;
+	}
 	public int getId() {
 		return id;
 	}
