@@ -3,6 +3,7 @@ package com.coderalia.encuestas.controllers;
 import com.coderalia.encuestas.domain.Answer;
 import com.coderalia.encuestas.domain.Question;
 import com.coderalia.encuestas.services.QuestionService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,7 @@ import java.util.List;
 public class QuestionController {
 	@Autowired
 	private QuestionService questionService;
-
+	
 	@RequestMapping
 	public String list(Model model){
 		List<Question> questions = questionService.getAllQuestions();
@@ -35,9 +36,14 @@ public class QuestionController {
 	
 	@RequestMapping(value="/add", method= RequestMethod.POST)
 	public String processAddNewQuestionForm(@ModelAttribute("newQuestion") Question newQuestion){
-		Answer answer = new Answer();
-		answer.setText("Prueba");
-		newQuestion.setListAnswers(Arrays.asList(answer));
+		Answer answer1 = new Answer();
+		answer1.setText("Congratulations");
+		answer1.setQuestion(newQuestion);
+		Answer answer2 = new Answer();
+		answer2.setText("Son of a bitch");
+		answer2.setQuestion(newQuestion);
+		
+		newQuestion.setAnswers(Arrays.asList(answer1,answer2));
 		questionService.addQuestion(newQuestion);	
 		return "redirect:/question";
 	}
