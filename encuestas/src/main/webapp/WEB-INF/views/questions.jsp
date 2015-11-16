@@ -7,8 +7,17 @@
 	<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 		<div class="thumbnail">
 			<div class="caption">
-				<h3>${question.questionText}</h3>
+				<h2>${question.questionText}</h2>
 			</div>
+			<c:forEach items="${question.answers}" var="answer">
+				<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+					<div class="thumbnail">
+						<div class="caption">
+							<h3>	- ${answer.text}</h3>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
 </c:forEach>
