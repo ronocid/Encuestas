@@ -2,9 +2,15 @@ package com.coderalia.encuestas.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
+
 
 @Entity(name="questions")
 @Table(name="questions")
@@ -15,7 +21,8 @@ public class Question {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String questionText;
-	private List<Answer> answers;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "question")
+	private Collection<Answer> answers = new LinkedHashSet<Answer>();
 	
 	public int getId() {
 		return id;
@@ -30,8 +37,7 @@ public class Question {
 		this.questionText = questionText;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "answers")
-	public List<Answer> getAnswers(){
+	public Collection<Answer> getAnswers(){
 		return answers;
 	}
 	

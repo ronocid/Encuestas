@@ -17,7 +17,7 @@ public class QuestionDAOImpl implements QuestionDAO {
 	
 	public List<Question> getAllQuestions() {
 		Session session = this.sessionFactory.openSession();
-	    List<Question> questionList = session.createQuery("from questions").list();
+		List<Question> questionList = session.createQuery("from questions").list();
 	    session.close();
 	    return questionList;
 	}
