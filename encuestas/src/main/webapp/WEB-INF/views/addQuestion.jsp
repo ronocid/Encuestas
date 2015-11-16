@@ -18,15 +18,30 @@
 			</div>
 			</section>
 			<section class="container">
-				<form:form modelAttribute="newQuestion" class="form-horizontal">
+				<form:form modelAttribute="newQuestionForm" class="form-horizontal">
 					<fieldset>
 					<legend>Add new Question</legend>
 					<div class="form-group">
 						<label class="control-label col-lg-2 col-lg-2" for="nombre">Texto pregunta:</label>
 						<div class="col-lg-10">
-							<form:input id="nombre" path="questionText" type="text" class="form:input-large"/>
+							<form:input id="nombre" path="question.questionText" type="text" class="form:input-large"/>
 						</div>
 					</div>
+					
+					<div class="form-group">
+						<label class="control-label col-lg-2 col-lg-2" for="answer1text">Respuesta 1:</label>
+						<div class="col-lg-10">
+							<form:input id="answer1text" path="answer1.text" type="text" class="form:input-large"/>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label col-lg-2 col-lg-2" for="answer2text">Respuesta 2:</label>
+						<div class="col-lg-10">
+							<form:input id="answer2text" path="answer2.text" type="text" class="form:input-large"/>
+						</div>
+					</div>
+					
 					<div class="form-group">
 						<div class="col-lg-offset-2 col-lg-10">
 							<input type="submit" id="btnAdd" class="btn btn-primary" value ="Add"/>

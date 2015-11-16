@@ -53,7 +53,7 @@
             <scope>runtime</scope>
         </dependency>
         
-        <!-- Dependencies Spring & mySql -->
+        <!-- Dependencies Hibernate & mySql -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
